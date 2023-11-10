@@ -2,6 +2,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
+import re
 
 def extract_number_from_string(s):
     # Replace commas with dots and filter out non-digit characters
@@ -26,11 +27,26 @@ def scrape_data(url):
         "Số phòng ngủ": "",
         "Số toilet": "",
         "Pháp lý": "",
+        "lat": "",
+        "lon": "",
+        "Địa chỉ": "",
         "Quận": "",
         "Thành phố": ""
     }
 
     soup = BeautifulSoup(html_content, 'html.parser')
+
+    address = soup.find('span', class_='re__pr-short-description js__pr-address')
+    data["Địa chỉ"] = address.text
+
+    # Get tọa độ
+    data_src_value = soup.find('div', class_='re__section re__pr-map js__section js__li-other').find('iframe')['data-src']
+    match = re.search(r'q=([-+]?\d*\.\d+),([-+]?\d*\.\d+)', data_src_value)
+    if match:
+        # Tọa độ lat, lon
+        data["lat"] = match.group(1)
+        data["lon"] = match.group(2)
+
 
     tabs = soup.find_all('a', class_='re__link-se')
     if tabs:

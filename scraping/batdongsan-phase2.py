@@ -22,6 +22,9 @@ existing_data = {
     "Số phòng ngủ": [],
     "Số toilet": [],
     "Pháp lý": [],
+    "lat": [],
+    "lon": [],
+    "Địa chỉ": [],
     "Quận": [],
     "Thành phố": []
 }
@@ -41,6 +44,9 @@ data = {
     "Số phòng ngủ": [],
     "Số toilet": [],
     "Pháp lý": [],
+    "lat": [],
+    "lon": [],
+    "Địa chỉ": [],
     "Quận": [],
     "Thành phố": []
 }
