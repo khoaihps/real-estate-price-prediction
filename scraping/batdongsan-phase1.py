@@ -21,7 +21,6 @@ while True:
     driver = webdriver.Chrome(options=chrome_options)
     driver.get(sourceUrl + path)
     print(sourceUrl + path)
-    time.sleep(1)
     html_content = driver.page_source
     soup = BeautifulSoup(html_content, 'html.parser')
 

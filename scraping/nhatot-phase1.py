@@ -7,8 +7,8 @@ import csv
 import scrapeBatdongsan
 
 unscraped_links = set()
-sourceUrl = 'https://batdongsan.com.vn'
-path = "/nha-dat-ban-ha-noi"
+sourceUrl = 'https://www.nhatot.com'
+path = "/mua-ban-bat-dong-san-ha-noi"
 
 chrome_options = Options()
 chrome_options.add_argument("--headless")
@@ -21,8 +21,8 @@ while True:
     driver = webdriver.Chrome(options=chrome_options)
     driver.get(sourceUrl + path)
     print(sourceUrl + path)
-    time.sleep(1)
     html_content = driver.page_source
+    print(html_content)
     soup = BeautifulSoup(html_content, 'html.parser')
 
     # Tìm tất cả các phần tử <a> với class 'js__product-link-for-product-id'
