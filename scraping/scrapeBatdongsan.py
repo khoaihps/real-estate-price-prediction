@@ -22,10 +22,12 @@ def scrape_data(url):
     data = {
         "Tên": "",
         "Diện tích": "",
+        "Mặt tiền": "",
         "Mức giá": "",
         "Hướng nhà": "",
         "Số phòng ngủ": "",
         "Số toilet": "",
+        "Nội thất": "",
         "Pháp lý": "",
         "lat": "",
         "lon": "",
