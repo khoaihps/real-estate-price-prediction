@@ -76,26 +76,7 @@ def scrape_data(url):
             # Kiểm tra xem title có trong data không trước khi thêm vào
             if title in data:
                 data[title] = value
-                # # Trích xuất số từ chuỗi nếu có
-                # number_value = extract_number_from_string(value)
-                #
-                # if value == "Sổ đỏ/ Sổ hồng.":
-                #     data[title] = "Sổ đỏ/ Sổ hồng"
-                # elif title == "Diện tích":
-                #     # Loại bỏ ký tự cuối cùng nếu title là "Diện tích"
-                #     number_value = number_value[:-1] if number_value else ""
-                #     data[title] = number_value
-                # elif "triệu/m²" in value:
-                #     # Nếu value chứa "triệu/m²", thực hiện phép nhân
-                #     number_value = number_value[:-1] if number_value else ""
-                #     data[title] = str(round(float(number_value) * float(data["Diện tích"]) / 1000, 2))
-                # elif "triệu" in value:
-                #     # Nếu value chứa "triệu/m²", thực hiện phép nhân
-                #     data[title] = str(round(float(number_value) / 1000, 2))
-                # elif title == "Mức giá" and value == "Thỏa thuận":
-                #     return None
-                # else:
-                #     data[title] = number_value if number_value else value
+
     else:
         driver.quit()
         return None
