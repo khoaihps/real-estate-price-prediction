@@ -71,10 +71,10 @@ def scrape_data():
 
     def process_link(link):
         url = link
+        successful_links.add(url)
         scraped_data = scrapeBatdongsan.scrape_data(url)
         print(f"Scraping link {len(successful_links)+1}: {url}")
         if scraped_data:
-            successful_links.add(url)
             for key, value in scraped_data.items():
                 if key in data:
                     data[key].append(value)

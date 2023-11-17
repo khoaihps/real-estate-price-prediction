@@ -14,20 +14,26 @@ def scrape_data(url):
     driver = webdriver.Chrome(options=chrome_options)
     driver.get(url)
     driver.refresh()
+    html_content = driver.page_source
+    soup = BeautifulSoup(html_content, 'html.parser')
+    if soup.find('div', class_='NotFound_warning__dwnf5'):
+        driver.quit()
+        return None
     try:
         # Kiểm tra xem nút "Xem thêm" có tồn tại không
         button = WebDriverWait(driver, 1).until(
             EC.presence_of_element_located((By.XPATH, "//button[contains(text(), 'Xem thêm')]")))
-        driver.execute_script("arguments[0].scrollIntoView();", button)
+        # driver.execute_script("arguments[0].scrollIntoView();", button)
         driver.execute_script("arguments[0].click();", button)
     except TimeoutException:
         # Trường hợp không tìm thấy nút "Xem thêm"
         print("No 'Xem thêm' button found on the page")
-
-    # Click the button using JavaScript
-    driver.execute_script("arguments[0].click();", button)
+    #
+    # # Click the button using JavaScript
+    # driver.execute_script("arguments[0].click();", button)
 
     html_content = driver.page_source
+    soup = BeautifulSoup(html_content, 'html.parser')
     driver.quit()
 
     data = {
@@ -47,7 +53,6 @@ def scrape_data(url):
         "Thành phố": ""
     }
 
-    soup = BeautifulSoup(html_content, 'html.parser')
 
     data["Tên"] = soup.find('h1', class_='AdDecriptionVeh_adTitle__vEuKD').text.strip()
 
