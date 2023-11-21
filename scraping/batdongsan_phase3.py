@@ -59,9 +59,16 @@ def remove_duplicates():
                 price = extract_number_from_string(data["Mức giá"][-1])[:-1]
                 square = extract_number_from_string(data["Diện tích"][-1])[:-1]
                 data["Mức giá"][-1] = str(round(float(price) * float(square) / 1000, 2)) + " tỷ"
+            if "tỷ/m²" in data["Mức giá"][-1]:
+                price = extract_number_from_string(data["Mức giá"][-1])[:-1]
+                square = extract_number_from_string(data["Diện tích"][-1])[:-1]
+                data["Mức giá"][-1] = str(round(float(price) * float(square), 2)) + " tỷ"
             elif "triệu" in data["Mức giá"][-1]:
                 price = extract_number_from_string(data["Mức giá"][-1])
                 data["Mức giá"][-1] = str(round(float(price) / 1000, 2)) + " tỷ"
+            if "tỷ" in data["Mức giá"][-1]:
+                price = extract_number_from_string(data["Mức giá"][-1])
+                data["Mức giá"][-1] = str(round(float(price), 2)) + " tỷ"
 
     clear_file(data_file_path)
     with open(data_file_path, 'a', newline='', encoding='utf-8') as tsvfile:
