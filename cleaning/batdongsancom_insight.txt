@@ -1,0 +1,15 @@
+Missing Value Counts:
+Tên                 0
+Diện tích           0
+Mặt tiền            0
+Mức giá          6671
+Hướng nhà           0
+Số phòng ngủ        0
+Số toilet           0
+Nội thất        25041
+Pháp lý             0
+lat              1240
+lon              1240
+Địa chỉ             0
+Quận                0
+Thành phố           1
