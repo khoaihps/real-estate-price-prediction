@@ -1,6 +1,7 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -13,7 +14,6 @@ def scrape_data(url):
     chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3")
     driver = webdriver.Chrome(options=chrome_options)
     driver.get(url)
-    driver.refresh()
     html_content = driver.page_source
     soup = BeautifulSoup(html_content, 'html.parser')
     if soup.find('div', class_='NotFound_warning__dwnf5'):
@@ -126,7 +126,7 @@ def scrape_data(url):
 
 if __name__ == "__main__":
     # Gọi hàm scrape_data với URL nhận được
-    scraped_data = scrape_data("https://www.nhatot.com/mua-ban-nha-dat-quan-hai-ba-trung-ha-noi/109857164.htm")
+    scraped_data = scrape_data("https://www.nhatot.com/mua-ban-nha-dat-quan-hoang-mai-ha-noi/111986091.htm")
 
     # In ra kết quả hoặc làm gì đó với dữ liệu scrape được
     print(scraped_data)

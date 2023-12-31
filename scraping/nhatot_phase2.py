@@ -79,11 +79,11 @@ def scrape_data():
                 if key in data:
                     data[key].append(value)
 
-            if len(successful_links) % 28 == 0:
-                unscraped_links = [link for link in links if link not in successful_links]
-                write_to_file(data, unscraped_links, data_file_path, links_file_path)
+        if len(successful_links) % 100 == 0:
+            unscraped_links = [link for link in links if link not in successful_links]
+            write_to_file(data, unscraped_links, data_file_path, links_file_path)
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=7) as executor:
         futures = [executor.submit(process_link, link) for link in links]
     concurrent.futures.wait(futures)
 

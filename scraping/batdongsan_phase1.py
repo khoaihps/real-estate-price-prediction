@@ -13,7 +13,7 @@ def scrape_links():
         existing_links = existing_links_file.read().splitlines()
         unscraped_links.update(existing_links)
     sourceUrl = 'https://batdongsan.com.vn'
-    path = "/nha-dat-ban-ha-noi/p2021"
+    path = "/nha-dat-ban-ha-noi?gtn=7-ty&gcn=30-ty"
 
     chrome_options = Options()
     chrome_options.add_argument("--headless")

@@ -17,7 +17,7 @@ def scrape_links():
         unscraped_links.update(existing_links)
 
     sourceUrl = 'https://www.nhatot.com'
-    path = "/mua-ban-bat-dong-san-ha-noi?page="
+    path = "/mua-ban-bat-dong-san-ha-noi?price=7000000000-30000000000&page="
 
     chrome_options = Options()
     chrome_options.add_argument("--headless")

@@ -7,10 +7,10 @@ import nhatot_phase3
 
 if __name__ == "__main__":
 
-    # Generating list of website links to scrape
-    print("Scraping batdongsan.com.vn: Running Phase 1...")
-    batdongsan_phase1.scrape_links()
-    print("Scraping batdongsan.com.vn: Phase 1 completed.")
+    # # Generating list of website links to scrape
+    # print("Scraping batdongsan.com.vn: Running Phase 1...")
+    # batdongsan_phase1.scrape_links()
+    # print("Scraping batdongsan.com.vn: Phase 1 completed.")
 
     # Scraping websites
     print("Scraping batdongsan.com.vn: Running Phase 2...")
