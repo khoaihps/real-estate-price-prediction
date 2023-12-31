@@ -72,8 +72,8 @@ def scrape_data():
     def process_link(link):
         url = link
         successful_links.add(url)
+        print(f"Scraping link {len(successful_links) + 1}: {url}")
         scraped_data = scrapeNhatot.scrape_data(link)
-        print(f"Scraping link {len(successful_links)+1}: {url}")
         if scraped_data:
             for key, value in scraped_data.items():
                 if key in data:

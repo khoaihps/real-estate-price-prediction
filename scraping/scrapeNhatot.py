@@ -16,6 +16,10 @@ def scrape_data(url):
     driver.get(url)
     html_content = driver.page_source
     soup = BeautifulSoup(html_content, 'html.parser')
+    if 'Please try again later!' in soup.find('body').get_text():
+        driver.refresh()
+        html_content = driver.page_source
+        soup = BeautifulSoup(html_content, 'html.parser')
     if soup.find('div', class_='NotFound_warning__dwnf5'):
         driver.quit()
         return None
@@ -27,7 +31,7 @@ def scrape_data(url):
         driver.execute_script("arguments[0].click();", button)
     except TimeoutException:
         # Trường hợp không tìm thấy nút "Xem thêm"
-        print("No 'Xem thêm' button found on the page")
+        print("No 'Xem thêm' button found on " + url)
     #
     # # Click the button using JavaScript
     # driver.execute_script("arguments[0].click();", button)
@@ -38,7 +42,7 @@ def scrape_data(url):
 
     data = {
         "Tên": "",
-        "Diện tích": "",
+        "Diện tích đất": "",
         "Chiều ngang": "",
         "Mức giá": "",
         "Hướng cửa chính": "",
@@ -113,6 +117,7 @@ def scrape_data(url):
 
     # Dictionary to map old keys to new keys
     key_mapping = {
+        "Diện tích đất": "Diện tích",
         "Chiều ngang": "Mặt tiền",
         "Hướng cửa chính": "Hướng nhà",
         "Số phòng vệ sinh": "Số toilet",
@@ -126,7 +131,7 @@ def scrape_data(url):
 
 if __name__ == "__main__":
     # Gọi hàm scrape_data với URL nhận được
-    scraped_data = scrape_data("https://www.nhatot.com/mua-ban-nha-dat-quan-hoang-mai-ha-noi/111986091.htm")
+    scraped_data = scrape_data("https://www.nhatot.com/mua-ban-nha-dat-quan-tay-ho-ha-noi/111803593.htm#px=SR-special_display_ad-[PO-10][PL-default]")
 
     # In ra kết quả hoặc làm gì đó với dữ liệu scrape được
     print(scraped_data)
