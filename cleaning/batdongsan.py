@@ -19,7 +19,7 @@ pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 
 # Specify the file path
-file_path = '../data/batdongsan.com.vn_data.tsv'
+file_path = './data/batdongsan.com.vn_data.tsv'
 
 # Read the TSV file
 df = pd.read_csv(file_path, delimiter='\t')
@@ -54,12 +54,12 @@ df['Pháp lý'] = df['Pháp lý'].apply(convert_phaply_to_int)
 # Count and print the unique values of the 'Hướng nhà' column
 value_counts = df['Nội thất'].value_counts()
 filtered_counts = value_counts[value_counts > 10]
-print(filtered_counts)
+# print(filtered_counts)
 
 # Print the data
 # print(df[['Diện tích', 'Mặt tiền', 'Số phòng ngủ', 'Số toilet', 'Mức giá', 'lat', 'lon', 'Nội thất', 'Pháp lý']].head(10))
 
 
 
-file_path = 'output/batdongsan.tsv'
+file_path = './cleaning/output/batdongsan.tsv'
 df.to_csv(file_path, sep='\t', index=False)

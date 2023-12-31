@@ -15,7 +15,7 @@ def count_values_above_threshold(df, column_name, threshold):
 # Đọc dữ liệu từ tệp CSV hoặc TSV
 df = pd.read_csv('./cleaning/output/processed_data.tsv', sep='\t')
 
-result = count_values_above_threshold(df, 'Diện tích', 100)
+result = count_values_above_threshold(df, 'Mức giá', 80)
 print(result)
 
 # Vẽ biểu đồ phân bố giá nhà sử dụng Seaborn
