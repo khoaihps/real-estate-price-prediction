@@ -37,6 +37,11 @@ df = df[ (df['Số phòng ngủ'] <= upper_limit)]
 upper_limit = df['Số toilet'].quantile(0.95)
 df = df[ (df['Số toilet'] <= upper_limit)]
 
+district_mapping = {district: i for i, district in enumerate(df['Quận'].unique())}
+
+# Thay thế giá trị trong cột 'Quận' bằng các số tương ứng
+df['Quận'] = df['Quận'].map(district_mapping)
+
 #Scale data
 scaler = StandardScaler()
 df['Diện tích'] = scaler.fit_transform(df[['Diện tích']])
